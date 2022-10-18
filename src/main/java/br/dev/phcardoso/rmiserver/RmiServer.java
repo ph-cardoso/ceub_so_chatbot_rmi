@@ -5,7 +5,6 @@ import br.dev.phcardoso.rmiinterface.ChatService;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 import java.rmi.server.RemoteServer;
 import java.rmi.server.ServerNotActiveException;
 import java.rmi.server.UnicastRemoteObject;
@@ -23,7 +22,6 @@ public class RmiServer extends UnicastRemoteObject implements ChatService {
     @Override
     public void quit() throws RemoteException {
         System.out.println("quit");
-        Registry registry = LocateRegistry.getRegistry();
         UnicastRemoteObject.unexportObject(this, false);
 
         new Thread(() -> {

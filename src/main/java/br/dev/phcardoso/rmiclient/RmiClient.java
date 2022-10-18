@@ -15,12 +15,12 @@ public class RmiClient {
         Scanner sc = new Scanner(System.in);
         ChatService chatService = (ChatService) Naming.lookup(objName);
 
-        String clientMessage = "";
+        String clientMessage;
         while(true) {
             System.out.println("Enter your message: ");
             clientMessage = sc.nextLine();
 
-            if (clientMessage.toUpperCase().equals("SAIR")) {
+            if (clientMessage.equalsIgnoreCase("SAIR")) {
                 chatService.quit();
                 break;
             }
