@@ -20,7 +20,7 @@ public class RmiClient {
             clientMessage = sc.nextLine();
 
             if (clientMessage.equalsIgnoreCase("SAIR")) {
-                System.out.println(chatService.sendServerReport());
+                System.out.println("\n" + chatService.sendServerReport());
                 chatService.quit();
                 break;
             }

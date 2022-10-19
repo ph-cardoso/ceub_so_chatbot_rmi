@@ -62,7 +62,7 @@ public class RmiServer extends UnicastRemoteObject implements ChatService {
 
         String content = stringBuilder.toString();
 
-        return  "Connection with ip (" + RemoteServer.getClientHost() + ")\n" + content + "\n" +
+        return  "Connection with ip (" + RemoteServer.getClientHost() + ")\n\n" + content + "\n" +
                 "\nSuccessful responses: " + successfulResponses + "\n";
     }
 
