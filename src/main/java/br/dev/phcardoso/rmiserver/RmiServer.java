@@ -10,13 +10,18 @@ import java.rmi.server.ServerNotActiveException;
 import java.rmi.server.UnicastRemoteObject;
 
 public class RmiServer extends UnicastRemoteObject implements ChatService {
+    private static long successfulResponses = 0;
     private final static String objName = "rmi://localhost/ChatService";
     protected RmiServer() throws RemoteException {
     }
 
     @Override
     public String sendMessage(String clientMessage) throws RemoteException, ServerNotActiveException {
-        return "Server says hello to " + clientMessage + "!\n" + RemoteServer.getClientHost();
+        String response = ResponseGenerator.generateResponse(clientMessage, RemoteServer.getClientHost());
+        if (!response.equals("Não entendi sua pergunta. Tente perguntar de outra forma...")) {
+            successfulResponses++;
+        }
+        return response;
     }
 
     @Override
@@ -30,9 +35,15 @@ public class RmiServer extends UnicastRemoteObject implements ChatService {
                 Thread.sleep(2000);
             } catch (InterruptedException ignored) {
             }
-            System.out.println("done");
+            System.out.println("Done");
             System.exit(0);
         }).start();
+    }
+
+    @Override
+    public String sendServerReport() throws RemoteException, ServerNotActiveException {
+        return "Connection with ip (" + RemoteServer.getClientHost() + ")\n" +
+                "Successful responses: " + successfulResponses + "\n";
     }
 
     public static void main(String[] args) {
@@ -43,7 +54,7 @@ public class RmiServer extends UnicastRemoteObject implements ChatService {
 
             Naming.rebind(RmiServer.objName, chatService);
             System.out.println("Server is ready");
-            System.out.println("Waiting for invocations from clients...");
+            System.out.println("Waiting for invocations from clients...\n");
         } catch (Exception e) {
             e.printStackTrace();
         }
