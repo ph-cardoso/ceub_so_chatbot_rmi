@@ -34,5 +34,9 @@
   "9": {
       "pergunta": "Intel ou AMD?",
       "resposta": "Prefiro sinal de fumaça...\n"
+  },
+  "10": {
+    "pergunta": "Anime ou mangá?",
+    "resposta": "Ambos.\n"
   }
 }
