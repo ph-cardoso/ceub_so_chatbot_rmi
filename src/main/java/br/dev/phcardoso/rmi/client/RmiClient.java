@@ -28,6 +28,8 @@ public class RmiClient {
                 break;
             }
 
+
+
             System.out.println(chatService.sendMessage(clientMessage, clientUuid));
         }
     }
