@@ -62,7 +62,6 @@ build/
 **/*.jar
 
 # Maven specific
-
 target/
 
 #Skip all SVN related
@@ -77,3 +76,9 @@ CVS/
 **/CVS/*
 .cvsignore
 */.cvsignore
+
+# Postgres docker data
+postgres_data/
+
+# Env files
+.env

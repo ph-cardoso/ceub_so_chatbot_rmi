@@ -1,6 +1,7 @@
 package br.dev.phcardoso.rmi.server.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -40,5 +41,29 @@ public class UserData {
     public void incrementSuccessfulRequests() {
         this.messagesSent++;
         this.successfulRequests++;
+    }
+
+    public UUID getClientUuid() {
+        return clientUuid;
+    }
+
+    public String getIpAdress() {
+        return ipAdress;
+    }
+
+    public int getMessagesSent() {
+        return messagesSent;
+    }
+
+    public int getSuccessfulRequests() {
+        return successfulRequests;
+    }
+
+    public int getUnsuccessfulRequests() {
+        return unsuccessfulRequests;
+    }
+
+    public List<String> getNotFoundMessagesList() {
+        return Collections.unmodifiableList(notFoundMessagesList);
     }
 }

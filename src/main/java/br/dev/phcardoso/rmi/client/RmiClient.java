@@ -9,7 +9,6 @@ import java.rmi.server.ServerNotActiveException;
 import java.util.Scanner;
 import java.util.UUID;
 
-// TODO: Gerar um uuid dinâmico para identificar o cliente e enviar em cada requisição
 public class RmiClient {
     public static void main(String[] args) throws IOException, NotBoundException, ServerNotActiveException {
         String objName = "rmi://localhost/ChatService";
